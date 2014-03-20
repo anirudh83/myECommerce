@@ -12,7 +12,7 @@
         <property name="dataSource" ref="testCoreDataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>com.mec.ecommerce.core.domain</value>
+                <value>com.ecommerce.core.domain</value>
             </list>
         </property>
         <property name="hibernateProperties">

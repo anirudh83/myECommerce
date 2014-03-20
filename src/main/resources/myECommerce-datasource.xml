@@ -11,7 +11,7 @@
 <bean id="pilllrCoreSessionFactory"
       class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
     <property name="dataSource" ref="pilllrCoreDataSource" />
-    <property name="packagesToScan" value="com.mec.ecommerce.core.domain" />
+    <property name="packagesToScan" value="com.ecommerce.core.domain" />
     <property name="hibernateProperties">
         <props>
             <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
