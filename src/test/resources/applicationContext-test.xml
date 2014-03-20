@@ -36,6 +36,6 @@
         </property>
     </bean>
 
-    <import resource="pilllr-core-datasource-test.xml"/>
+    <import resource="myECommerce-datasource-test.xml"/>
 
 </beans>
