@@ -14,8 +14,8 @@
        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:component-scan
-            base-package="com.pilllr.ecommerce.core.persistence.impl,com.pilllr.ecommerce.core.service.impl,com.pilllr.ecommerce.core.controller,com.pilllr.ecommerce.core.transformer,
-            com.pilllr.errors.persistence.impl,com.pilllr.errors.service.impl,com.pilllr.errors.controller"/>
+            base-package="com.mec.ecommerce.core.persistence.impl,com.pilmecommerce.core.service.impl,com.mec.ecommerce.core.controller,com.pilllr.ecmece.core.transformer,
+            com.pilllr.errormecistence.impl,com.mec.errors.service.impl,com.pilllr.ermecontroller"/>
     <context:annotation-config/>
 
     <mvc:annotation-driven/>

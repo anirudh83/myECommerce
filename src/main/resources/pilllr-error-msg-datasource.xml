@@ -9,7 +9,7 @@
 <bean id="pilllrErrorMsgHandlerSessionFactory"
       class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
     <property name="dataSource" ref="pilllrErrorMsgHandlerDataSource" />
-    <property name="packagesToScan" value="com.pilllr.errors.domain" />
+    <property name="packagesToScan" value="com.mec.errors.domain" />
     <property name="hibernateProperties">
         <props>
             <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
