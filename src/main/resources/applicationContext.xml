@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+         http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:component-scan
+            base-package="com.pilllr.ecommerce.core.persistence.impl,com.pilllr.ecommerce.core.service.impl,com.pilllr.ecommerce.core.controller,com.pilllr.ecommerce.core.transformer,
+            com.pilllr.errors.persistence.impl,com.pilllr.errors.service.impl,com.pilllr.errors.controller" />
+    <context:annotation-config />
+
+    <mvc:annotation-driven />
+    <tx:annotation-driven />
+
+    <context:property-placeholder location="classpath:properties/database.${env.name}.properties,classpath:properties/error-message.${env.name}.properties" />
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"> </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"> </bean>
+            </list>
+        </property>
+    </bean>
+
+        <import resource="pilllr-core-datasource.xml"/>
+        <import resource="pilllr-error-msg-datasource.xml"/>
+    </beans>
