@@ -1,7 +1,6 @@
 package com.ecommerce.core.controller;
 
 import com.ecommerce.core.service.MerchantService;
-
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,10 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.util.NestedServletException;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -56,7 +52,7 @@ public class MerchantIntegrationTest {
     }
 
     private void populateMockMerchant() throws Exception {
-        com.mec.persistence.domain.Merchant merchant = getMerchantDomainDTO("TEST");
+        com.ecommerce.core.dto.Merchant merchant = getMerchantDomainDTO("TEST");
 
 
         ObjectMapper mapper = new ObjectMapper();
@@ -86,7 +82,7 @@ public class MerchantIntegrationTest {
     @Test
     public void shouldCreateMerchant() throws Exception {
 
-        com.mec.persistence.domain.Merchant merchant = getMerchantDomainDTO("TEST");
+        com.ecommerce.core.dto.Merchant merchant = getMerchantDomainDTO("TEST");
 
         ObjectMapper mapper = new ObjectMapper();
         String s = mapper.writeValueAsString(merchant);
@@ -109,7 +105,7 @@ public class MerchantIntegrationTest {
         .andExpect(jsonPath("$.id").exists())
         .andExpect(jsonPath("$.name").value("TEST"));
 
-        com.mec.persistence.domain.Merchant merchant = getMerchantDomainDTO("TEST1");
+        com.ecommerce.core.dto.Merchant merchant = getMerchantDomainDTO("TEST1");
         merchant.setId(1l);
         
         ObjectMapper mapper = new ObjectMapper();
@@ -132,7 +128,7 @@ public class MerchantIntegrationTest {
 				.andExpect(jsonPath("$.id").exists())
 				.andExpect(jsonPath("$.name").value("TEST"));
 
-		com.mec.persistence.domain.Merchant merchant = new com.mec.persistence.domain.Merchant();
+		com.ecommerce.core.dto.Merchant merchant = new com.ecommerce.core.dto.Merchant();
 		merchant.setName("TEST1");
 		//merchant.setId(1l); Setting no id
 
@@ -145,7 +141,7 @@ public class MerchantIntegrationTest {
     
     @Test
     public void shouldDeleteMerchant() throws Exception {
-        com.mec.persistence.domain.Merchant merchant = getMerchantDomainDTO("TEST1");
+        com.ecommerce.core.dto.Merchant merchant = getMerchantDomainDTO("TEST1");
 
         ObjectMapper mapper = new ObjectMapper();
         String s = mapper.writeValueAsString(merchant);
@@ -175,7 +171,7 @@ public class MerchantIntegrationTest {
 
     @Test
     public void shouldNotPersistMerchantIfNoPaymentProvider() throws Exception {
-        com.mec.persistence.domain.Merchant merchant = new com.mec.persistence.domain.Merchant();
+        com.ecommerce.core.dto.Merchant merchant = new com.ecommerce.core.dto.Merchant();
         merchant.setName("TEST");
 
         ObjectMapper mapper = new ObjectMapper();
@@ -188,10 +184,10 @@ public class MerchantIntegrationTest {
 
     }
 
-    private com.mec.persistence.domain.Merchant getMerchantDomainDTO(String name) {
-        com.mec.persistence.domain.Merchant merchant = new com.mec.persistence.domain.Merchant();
+    private com.ecommerce.core.dto.Merchant getMerchantDomainDTO(String name) {
+        com.ecommerce.core.dto.Merchant merchant = new com.ecommerce.core.dto.Merchant();
         merchant.setName(name);
-        com.mec.persistence.domain.PaymentProvider paymentProvider = new com.mec.persistence.domain.PaymentProvider();
+        com.ecommerce.core.dto.PaymentProvider paymentProvider = new com.ecommerce.core.dto.PaymentProvider();
         paymentProvider.setName("WEBPAY");
         paymentProvider.setClientId("test");
         merchant.setPaymentProvider(paymentProvider);

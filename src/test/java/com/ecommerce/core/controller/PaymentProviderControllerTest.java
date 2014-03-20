@@ -75,8 +75,8 @@ public class PaymentProviderControllerTest {
         return paymentProvider;
     }
 
-    private com.mec.persistence.domain.PaymentProvider getMockPaymentProviderDTO(String name) {
-        com.mec.persistence.domain.PaymentProvider paymentProviderDTO = new com.mec.persistence.domain.PaymentProvider();
+    private com.ecommerce.core.dto.PaymentProvider getMockPaymentProviderDTO(String name) {
+        com.ecommerce.core.dto.PaymentProvider paymentProviderDTO = new com.ecommerce.core.dto.PaymentProvider();
         paymentProviderDTO.setId(1l);
         paymentProviderDTO.setName(name);
         paymentProviderDTO.setPassword("test");

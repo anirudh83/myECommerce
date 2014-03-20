@@ -1,12 +1,12 @@
 package com.ecommerce.core.controller;
 
 import com.ecommerce.core.domain.Transaction;
+import com.ecommerce.core.dto.Merchant;
+import com.ecommerce.core.dto.PaymentProvider;
+import com.ecommerce.core.dto.SettlementRequest;
 import com.ecommerce.core.service.MerchantService;
 import com.ecommerce.core.service.TransactionService;
 import com.ecommerce.core.transformer.MerchantTransformer;
-import com.mec.persistence.domain.PaymentProvider;
-import com.mec.persistence.domain.QpfsRequest;
-import com.mec.persistence.domain.SettlementRequest;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.hibernate.ObjectNotFoundException;
 import org.junit.Before;
@@ -18,7 +18,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.hamcrest.Matchers.is;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyLong;
 import static org.mockito.Mockito.when;
@@ -98,7 +97,7 @@ public class SettlementRequestControllerTest {
         when(mockTransactionService.persist((Transaction) any())).thenReturn(getMockTransaction(1l));
 
         SettlementRequest settlementRequest = new SettlementRequest();
-        com.mec.persistence.domain.Merchant merchant = new com.mec.persistence.domain.Merchant();
+        Merchant merchant = new Merchant();
         merchant.setId(1l);
         settlementRequest.setMerchant(merchant);
 
@@ -116,7 +115,7 @@ public class SettlementRequestControllerTest {
 
     private SettlementRequest getSettlementRequest() {
         SettlementRequest settlementRequest = new SettlementRequest();
-        com.mec.persistence.domain.Merchant merchant = new com.mec.persistence.domain.Merchant();
+        Merchant merchant = new Merchant();
         merchant.setId(1l);
         PaymentProvider paymentProvider = new PaymentProvider();
         paymentProvider.setName("WEBPAY2");

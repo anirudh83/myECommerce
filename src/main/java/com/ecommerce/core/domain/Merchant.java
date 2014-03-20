@@ -20,7 +20,7 @@ public class Merchant {
     private PaymentProvider paymentProvider;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE , generator = "pilllr_merchant_sequence_generator")
+    @GeneratedValue(strategy = GenerationType.TABLE , generator = "mec_merchant_sequence_generator")
     @Column(name = "id", unique = true, nullable = false)
     public Long getId() {
         return id;

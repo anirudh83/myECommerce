@@ -1,17 +1,9 @@
 package com.ecommerce.core.controller;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import com.ecommerce.core.dto.*;
 import com.ecommerce.core.service.MerchantService;
-import com.mec.persistence.domain.*;
+import com.ecommerce.core.service.OrderService;
+import com.ecommerce.core.transformer.QpfsRequestTransformer;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.hibernate.ObjectNotFoundException;
 import org.junit.Before;
@@ -23,8 +15,14 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.ecommerce.core.service.OrderService;
-import com.ecommerce.core.transformer.QpfsRequestTransformer;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 /**

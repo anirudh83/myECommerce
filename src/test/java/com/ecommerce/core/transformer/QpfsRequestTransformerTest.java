@@ -1,26 +1,16 @@
 package com.ecommerce.core.transformer;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import com.ecommerce.core.domain.CustomerAddress;
+import com.ecommerce.core.domain.Transaction;
+import com.ecommerce.core.dto.*;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.Test;
-
-import com.ecommerce.core.domain.CustomerAddress;
-import com.ecommerce.core.domain.Order;
-import com.ecommerce.core.domain.Transaction;
-import com.mec.persistence.domain.Address;
-import com.mec.persistence.domain.CreditCard;
-import com.mec.persistence.domain.Customer;
-import com.mec.persistence.domain.Merchant;
-import com.mec.persistence.domain.Product;
-import com.mec.persistence.domain.QpfsRequest;
-import com.mec.persistence.domain.QpfsTransaction;
+import static org.junit.Assert.*;
 
 public class QpfsRequestTransformerTest {
 
@@ -69,7 +59,7 @@ public class QpfsRequestTransformerTest {
 		
 		transaction.setProducts(getProductDTOList());
 		
-		com.mec.persistence.domain.Order orderDTO = new com.mec.persistence.domain.Order();
+		Order orderDTO = new Order();
 		orderDTO.setOrderDate("18/02/2014");
 		orderDTO.setOrderId("Order-1");
 		orderDTO.setOrderType("online_purchase");
@@ -78,7 +68,7 @@ public class QpfsRequestTransformerTest {
 		
 		qpfsRequest.setTransaction(transaction);
 		
-		Order order = qpfsRequestTransformer.getOrder(qpfsRequest);
+		com.ecommerce.core.domain.Order order = qpfsRequestTransformer.getOrder(qpfsRequest);
 		
 		assertNotNull(order);
 		
@@ -116,7 +106,7 @@ public class QpfsRequestTransformerTest {
 	@Test
 	public void testShouldPopulateCreditCardDetails() {
 		
-		Order order = new Order();
+		com.ecommerce.core.domain.Order order = new com.ecommerce.core.domain.Order();
 		CreditCard qpfsCreditCard = getCreditcardDTO();
 		qpfsRequestTransformer.populateCreditCard(order, qpfsCreditCard);
 		
@@ -139,7 +129,7 @@ public class QpfsRequestTransformerTest {
 	
 	@Test
 	public void testShouldPopulateTransaction() {
-		Order order = new Order();
+        com.ecommerce.core.domain.Order order = new com.ecommerce.core.domain.Order();
 		QpfsRequest qpfsRequest = new QpfsRequest();
 		
 		Merchant merchant = new Merchant();
@@ -162,7 +152,7 @@ public class QpfsRequestTransformerTest {
 	
 	@Test
 	public void testShouldPopulateCustomer() {
-		Order order = new Order();
+        com.ecommerce.core.domain.Order order = new com.ecommerce.core.domain.Order();
 		Customer customerDTO = new Customer();
 		customerDTO.setBirthdate("25/07/1985");
 		customerDTO.setEmail("test@pantha.com");
@@ -187,7 +177,7 @@ public class QpfsRequestTransformerTest {
 	
 	@Test
 	public void testShouldPopulateShippingAddress() {
-		Order order = new Order();
+        com.ecommerce.core.domain.Order order = new com.ecommerce.core.domain.Order();
 		com.ecommerce.core.domain.Customer customer = new com.ecommerce.core.domain.Customer();
 		order.setCustomer(customer);
 		
@@ -225,7 +215,7 @@ public class QpfsRequestTransformerTest {
 
 	@Test
 	public void testShouldPopulateBillingAddress() {
-		Order order = new Order();
+        com.ecommerce.core.domain.Order order = new com.ecommerce.core.domain.Order();
 		com.ecommerce.core.domain.Customer customer = new com.ecommerce.core.domain.Customer();
 		customer.setCustomerAddresses(new ArrayList<CustomerAddress>());
 		order.setCustomer(customer);
@@ -257,9 +247,8 @@ public class QpfsRequestTransformerTest {
 	
 	@Test
 	public void testShouldPopulateProductsInOrder() {
-		List<Product> productsDTO = getProductDTOList();
-		Order order = new Order();
-		
+		List<com.ecommerce.core.dto.Product> productsDTO = getProductDTOList();
+        com.ecommerce.core.domain.Order order = new com.ecommerce.core.domain.Order();
 		qpfsRequestTransformer.populateProductsInOrder(productsDTO, order);
 		
 		Set<com.ecommerce.core.domain.Product> products = order.getProducts();

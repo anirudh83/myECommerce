@@ -1,22 +1,9 @@
 package com.ecommerce.core.controller;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import com.mec.persistence.domain.PaymentProvider;
+import com.ecommerce.core.domain.Merchant;
+import com.ecommerce.core.dto.PaymentProvider;
+import com.ecommerce.core.service.MerchantService;
+import com.ecommerce.core.transformer.MerchantTransformer;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.hibernate.ObjectNotFoundException;
 import org.junit.Before;
@@ -28,9 +15,16 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.ecommerce.core.domain.Merchant;
-import com.ecommerce.core.service.MerchantService;
-import com.ecommerce.core.transformer.MerchantTransformer;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -58,7 +52,7 @@ public class MerchantControllerTest {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(merchantController).build();
         when(mockMerchantTransformer.getMerchantDTO((Merchant)any())).thenReturn(getMockMerchantDTO(1l));
-        when(mockMerchantTransformer.getLocalDomainObjectFromDTO((com.mec.persistence.domain.Merchant)any())).thenReturn(getMockMerchantWithPaymentProvider(1l));
+        when(mockMerchantTransformer.getLocalDomainObjectFromDTO((com.ecommerce.core.dto.Merchant)any())).thenReturn(getMockMerchantWithPaymentProvider(1l));
         when(mockMerchantTransformer.getMerchantDTOList((List<Merchant>)any())).thenReturn(getMockMerchantDTOList());
 
     }
@@ -102,7 +96,7 @@ public class MerchantControllerTest {
 
     @Test
     public void shouldPostMerchant() throws Exception {
-        com.mec.persistence.domain.Merchant mockInputMerchant = getMockMerchantDTO(null);
+        com.ecommerce.core.dto.Merchant mockInputMerchant = getMockMerchantDTO(null);
         Merchant mockOutputMerchant = getMockMerchantWithPaymentProvider(null);;
         mockOutputMerchant.setId(1l);
 
@@ -121,7 +115,7 @@ public class MerchantControllerTest {
     
     @Test
     public void shouldUpdateMerchant() throws Exception {
-        com.mec.persistence.domain.Merchant mockInputMerchant = getMockMerchantDTO(1l);
+        com.ecommerce.core.dto.Merchant mockInputMerchant = getMockMerchantDTO(1l);
         Merchant mockOutputMerchant = getMockMerchantWithPaymentProvider(1l);
 
         when(mockMerchantService.get(1l)).thenReturn(mockOutputMerchant);
@@ -141,7 +135,7 @@ public class MerchantControllerTest {
     @Test
     public void shouldNotUpdateNonExistingMerchant() throws Exception {
 
-        com.mec.persistence.domain.Merchant mockInputMerchant = getMockMerchantDTO(1l);
+        com.ecommerce.core.dto.Merchant mockInputMerchant = getMockMerchantDTO(1l);
 
         ObjectNotFoundException e  = new ObjectNotFoundException(1,"No Such Merchant");
         when(mockMerchantService.get(1l)).thenThrow(e);
@@ -192,8 +186,8 @@ public class MerchantControllerTest {
         return merchant;
     }
 
-    private com.mec.persistence.domain.Merchant getMockMerchantDTO(Long id){
-        com.mec.persistence.domain.Merchant merchantDTO = new com.mec.persistence.domain.Merchant();
+    private com.ecommerce.core.dto.Merchant getMockMerchantDTO(Long id){
+        com.ecommerce.core.dto.Merchant merchantDTO = new com.ecommerce.core.dto.Merchant();
         merchantDTO.setId(id);
         merchantDTO.setName("Test");
         PaymentProvider paymentProvider = new PaymentProvider();
@@ -209,8 +203,8 @@ public class MerchantControllerTest {
         return merchantList;
     }
 
-    private List<com.mec.persistence.domain.Merchant> getMockMerchantDTOList(){
-        List<com.mec.persistence.domain.Merchant> merchantDTOList = new ArrayList<com.mec.persistence.domain.Merchant>();
+    private List<com.ecommerce.core.dto.Merchant> getMockMerchantDTOList(){
+        List<com.ecommerce.core.dto.Merchant> merchantDTOList = new ArrayList<com.ecommerce.core.dto.Merchant>();
         merchantDTOList.add(getMockMerchantDTO(1l));
         merchantDTOList.add(getMockMerchantDTO(2l));
         return merchantDTOList;
