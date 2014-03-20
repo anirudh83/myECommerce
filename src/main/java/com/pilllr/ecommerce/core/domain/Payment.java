@@ -17,7 +17,7 @@ import javax.persistence.Table;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name="pilllr_payment")
+@Table(name="mec_payment")
 public class Payment {
 
     private Long id;

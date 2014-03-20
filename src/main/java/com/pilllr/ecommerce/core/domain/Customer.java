@@ -14,7 +14,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name="pilllr_customer")
+@Table(name="mec_customer")
 public class Customer {
 
     private Long id;

@@ -11,8 +11,8 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "pilllr_merchant")
-@TableGenerator(name="pilllr_merchant_sequence_generator",initialValue = 9999999 ,allocationSize = 50)
+@Table(name = "mec_merchant")
+@TableGenerator(name="mec_merchant_sequence_generator",initialValue = 9999 ,allocationSize = 50)
 public class Merchant {
 
     private Long id;

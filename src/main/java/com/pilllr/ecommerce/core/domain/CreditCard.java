@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "pilllr_credit_card")
+@Table(name = "mec_credit_card")
 public class CreditCard {
 
 	private Long id;

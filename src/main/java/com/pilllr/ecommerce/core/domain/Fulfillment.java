@@ -12,7 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name="pilllr_fulfillment")
+@Table(name="mec_fulfillment")
 public class Fulfillment {
 
     private Long id;

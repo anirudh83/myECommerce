@@ -14,7 +14,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "pilllr_order")
+@Table(name = "mec_order")
 public class Order {
 
     private Long id;
