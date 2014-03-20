@@ -1,12 +1,12 @@
 package com.ecommerce.core.transformer;
 
+import com.ecommerce.core.dto.PaymentProvider;
 import org.springframework.stereotype.Service;
 
-import com.mec.persistence.domain.PaymentProvider;
 
 /**
  * 
- * @author sunil
+ * @author anirudh
  *
  */
 @Service

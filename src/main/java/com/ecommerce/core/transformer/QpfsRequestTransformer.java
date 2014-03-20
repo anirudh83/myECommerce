@@ -1,26 +1,17 @@
 package com.ecommerce.core.transformer;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-import org.springframework.stereotype.Service;
-
-import com.ecommerce.core.domain.Address;
 import com.ecommerce.core.domain.CustomerAddress;
 import com.ecommerce.core.domain.Transaction;
-import com.mec.persistence.domain.CreditCard;
-import com.mec.persistence.domain.Customer;
-import com.mec.persistence.domain.Order;
-import com.mec.persistence.domain.Product;
-import com.mec.persistence.domain.QpfsRequest;
-import com.mec.persistence.domain.QpfsTransaction;
+import com.ecommerce.core.dto.*;
+import org.springframework.stereotype.Service;
+
+import java.util.*;
+
 
 /**
  * 
- * @author sunil
+ * @author anirudh
  *
  */
 @Service
@@ -101,9 +92,9 @@ public class QpfsRequestTransformer {
 		}
 		
 		
-		com.mec.persistence.domain.Address shippingDTO = customerDTO.getAddress();
+		com.ecommerce.core.dto.Address shippingDTO = customerDTO.getAddress();
 
-		Address shippingAddress = new Address();
+		com.ecommerce.core.domain.Address shippingAddress = new com.ecommerce.core.domain.Address();
 		shippingAddress.setAddressLine1(shippingDTO.getAddress1());
 		shippingAddress.setAddressLine2(shippingDTO.getAddress2());
 		shippingAddress.setCity(shippingDTO.getCity());
@@ -120,14 +111,14 @@ public class QpfsRequestTransformer {
 		
 	}
 
-	protected void populateBillingAddress(com.ecommerce.core.domain.Order order, com.mec.persistence.domain.Address billingAddrDTO) {
+	protected void populateBillingAddress(com.ecommerce.core.domain.Order order,Address billingAddrDTO) {
 		com.ecommerce.core.domain.Customer customer = order.getCustomer();
 		Collection<CustomerAddress> customerAddresses = customer.getCustomerAddresses();
 		if(customerAddresses == null) {
 			customerAddresses = new ArrayList<CustomerAddress>();
 		}
-		
-		Address billingAddress = new Address();
+
+        com.ecommerce.core.domain.Address billingAddress = new com.ecommerce.core.domain.Address();
 		
 		billingAddress.setAddressLine1(billingAddrDTO.getAddress1());
 		billingAddress.setAddressLine2(billingAddrDTO.getAddress2());

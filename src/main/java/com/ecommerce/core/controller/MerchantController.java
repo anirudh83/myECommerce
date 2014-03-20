@@ -1,11 +1,10 @@
 package com.ecommerce.core.controller;
 
+import com.ecommerce.core.dto.Merchant;
 import com.ecommerce.core.exception.NoPaymentProviderProvidedException;
 import com.ecommerce.core.exception.NoSuchMerchantExistsException;
 import com.ecommerce.core.service.MerchantService;
 import com.ecommerce.core.transformer.MerchantTransformer;
-
-import com.mec.persistence.domain.Merchant;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

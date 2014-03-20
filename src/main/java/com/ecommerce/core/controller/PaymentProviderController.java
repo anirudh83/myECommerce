@@ -1,9 +1,9 @@
 package com.ecommerce.core.controller;
 
+import com.ecommerce.core.dto.PaymentProvider;
 import com.ecommerce.core.exception.NoSuchPaymentProviderException;
 import com.ecommerce.core.service.PaymentProviderService;
 import com.ecommerce.core.transformer.PaymentProviderTransformer;
-import com.mec.persistence.domain.PaymentProvider;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

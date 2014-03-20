@@ -1,10 +1,12 @@
 package com.ecommerce.core.controller;
 
-import java.util.logging.Logger;
-
-import com.ecommerce.core.exception.NoSuchMerchantExistsException;
 import com.ecommerce.core.domain.Merchant;
+import com.ecommerce.core.dto.QpfsRequest;
+import com.ecommerce.core.exception.NoSuchMerchantExistsException;
 import com.ecommerce.core.service.MerchantService;
+import com.ecommerce.core.service.OrderService;
+import com.ecommerce.core.service.TransactionService;
+import com.ecommerce.core.transformer.QpfsRequestTransformer;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,13 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ecommerce.core.service.OrderService;
-import com.ecommerce.core.service.TransactionService;
-import com.ecommerce.core.transformer.QpfsRequestTransformer;
-import com.mec.persistence.domain.Order;
-import com.mec.persistence.domain.Product;
-import com.mec.persistence.domain.QpfsRequest;
-import com.mec.persistence.domain.QpfsTransaction;
+import java.util.logging.Logger;
 
 /**
  * Created with IntelliJ IDEA.

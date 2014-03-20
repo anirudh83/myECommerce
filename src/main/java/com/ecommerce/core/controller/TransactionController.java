@@ -1,9 +1,9 @@
 package com.ecommerce.core.controller;
 
-import com.ecommerce.core.exception.NoSuchTransactionExists;
 import com.ecommerce.core.domain.Transaction;
+import com.ecommerce.core.dto.TransactionStatus;
+import com.ecommerce.core.exception.NoSuchTransactionExists;
 import com.ecommerce.core.service.TransactionService;
-import com.mec.persistence.domain.TransactionStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

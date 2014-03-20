@@ -1,12 +1,11 @@
 package com.ecommerce.core.transformer;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.ecommerce.core.dto.Merchant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mec.persistence.domain.Merchant;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
